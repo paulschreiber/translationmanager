@@ -81,8 +81,8 @@ class XliffElementHelper
             }
         }
 
-        $segment->addChild('source', html_entity_decode($source) ?? '');
-        $segment->addChild('target', !empty($target) ? html_entity_decode($target) : html_entity_decode($source));
+        $segment->addChild('source', htmlspecialchars($source) ?? '');
+        $segment->addChild('target', !empty($target) ? html_entity_decode($target) : htmlspecialchars($source));
     }
 
     /**
