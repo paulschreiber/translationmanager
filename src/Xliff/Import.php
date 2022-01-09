@@ -259,6 +259,8 @@ class Import
         $postData['ID'] = $relatedPost[$targetSiteId] ?? 0;
 
         $networkState = NetworkState::create();
+        $networkState->switch_to($sourceSiteId);
+        $postData['post_type'] = get_post_type($relatedPost[$sourceSiteId]);
         $networkState->switch_to($targetSiteId);
 
         $targetPostId = wp_insert_post($postData, true);
